@@ -46,6 +46,7 @@ public class NativeHTTPDataLoader implements DataLoader {
 
 	private static final long MAX_SIZE = 15000;
 
+	private String contentType = null;
 	/**
 	 * Used to limit the size of fetched data.
 	 */
@@ -107,6 +108,9 @@ public class NativeHTTPDataLoader implements DataLoader {
 			connection.setDoInput(true);
 			connection.setDoOutput(true);
 			connection.setUseCaches(false);
+			if (contentType != null && !contentType.isEmpty()) {
+				connection.setRequestProperty("Content-type", contentType);
+			}
 
 			out = connection.getOutputStream();
 			IOUtils.write(content, out);
@@ -156,7 +160,7 @@ public class NativeHTTPDataLoader implements DataLoader {
 
 	@Override
 	public void setContentType(String contentType) {
-		throw new NotImplementedException();
+		this.contentType = contentType;
 	}
 
 }
