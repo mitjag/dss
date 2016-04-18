@@ -147,6 +147,7 @@ public class OnlineTSPSource implements TSPSource {
 			// Call the communications layer
 			if (dataLoader == null) {
 				dataLoader = new NativeHTTPDataLoader();
+				dataLoader.setContentType("application/timestamp-query");
 			}
 			byte[] respBytes = dataLoader.post(tspServer, requestBytes);
 

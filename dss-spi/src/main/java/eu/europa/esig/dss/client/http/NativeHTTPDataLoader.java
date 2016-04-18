@@ -109,7 +109,7 @@ public class NativeHTTPDataLoader implements DataLoader {
 			connection.setDoOutput(true);
 			connection.setUseCaches(false);
 			if (contentType != null && !contentType.isEmpty()) {
-				connection.setRequestProperty("Content-type", contentType);
+				connection.setRequestProperty("Content-type", "application/timestamp-query");
 			}
 
 			out = connection.getOutputStream();
